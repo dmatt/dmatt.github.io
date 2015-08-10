@@ -27,7 +27,6 @@
     })();
     /* * * Disqus Reset Function * * */
     var reset = function (newIdentifier, newUrl, newTitle, newLanguage, newShortname) {
-    	disqus_shortname = newShortname;
         DISQUS.reset({
             reload: true,
             config: function () {
@@ -35,6 +34,7 @@
                 this.page.url = newUrl;
                 this.page.title = newTitle;
                 this.language = newLanguage;
+                this.forum = newShortname;
             }
         });
     };
