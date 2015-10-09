@@ -12,14 +12,14 @@ function a(t){var  a=e.createElement("script");a.type="text/javascript" ,a.async
         <div id="container">
             <h1>Embed Test </h1>
             <ul>
-                <li><a href="/spot-im.html">Spot.im</a></li>
-                <li>Facebook comments</li>
-                <li>Muut</li>
-                <li>Discourse</li>
-                <li>Livefyre</li>
-                <li>Civil Comments</li>
+                <li><a href="/competitive-analysis/spot-im.html">Spot.im</a></li>
+                <li><a href="/competitive-analysis/facebook-comments.html">Facebook comments</a></li>
+                <li><a href="/competitive-analysis/muut.html">Muut</a></li>
+                <li><a href="/competitive-analysis/discourse.html">Discourse</a></li>
+                <li><a href="/competitive-analysis/livefyre.html">Livefyre</a></li>
+                <li><a href="/competitive-analysis/civil-comments">Civil Comments</a></li>
             </ul>
-            <span class="spot-im-replies-count" data-post-id="cats"></span>
+            <p>Comment Count:</p>
 
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                 sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -48,7 +48,26 @@ function a(t){var  a=e.createElement("script");a.type="text/javascript" ,a.async
                 occaecat cupidatat non proident, sunt in culpa qui officia
                 deserunt mollit anim id est laborum.</p>
 
-            <div id="spot-im-frame-inpage" data-post-id="cats"></div>
+            <div id="disqus_thread"></div>
+            <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            /*
+            var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            }
+            */
+            (function() {  //REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+                var d = document, s = d.createElement('script');
+                s.src = '//kaffepausen.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
             <div id="page-content">
                 <h2>Man Lands on Moon</h2>
 
