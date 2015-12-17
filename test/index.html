@@ -69,11 +69,15 @@
         (d.head || d.body).appendChild(s);
     })();
     function disqus_config() {
-    this.callbacks.onNewComment = [function(comment) { 
-      alert(comment.id);
-      alert(comment.text);
-      alert(comment.text);
-    }]};
+        this.callbacks.onNewComment = [function(comment) { 
+          alert(comment.id);
+          console.log(comment.id);
+          alert(comment.text);
+          console.log(comment.text);
+          alert(comment);
+          console.log(comment);
+        }];
+    }
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
             <div id="page-content">
