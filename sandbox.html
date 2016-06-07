@@ -4,10 +4,12 @@ title: jQuery Colors
 excerpt: A new hue every second.
 ---
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js">
-$(document).ready(function() {
-	$(body).css("color","#000000");
-});
+<script>
+var currentColor = 000000;
+	setInterval(function () {
+	  ++currentColor;
+	  $("body").css("background-color","#"+currentColor);
+	}, 100);
 </script>
 
 <div class="container-fluid">
