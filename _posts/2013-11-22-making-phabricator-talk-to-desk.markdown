@@ -2,7 +2,8 @@
 layout: post
 title:  "Making Phabricator talk to Desk with email and APIs"
 date:   2013-11-22 14:00:00 -0700
-categories: technology
+categories: [technology, things_ive_made]
+thumbnail: https://media.disquscdn.com/notes/dmatt_script_ss.png
 ---
 
 ![Sew confused rite now.](http://i.imgur.com/kOj2h3Z.jpg)
@@ -18,6 +19,14 @@ This whole thing was essentially a Python and API requests learning experience f
 5. Make a bunch of requests to Desk to check what cases have the Task in a case custom field and make a list of those cases.
 6. Make more requests to Desk that adds a label to those cases.
 7. After update cases with these labels, I created a rule and notification email in Desk that says something like “Hey, we recently made a change in our code that fixes the issue you reported to us! Aren’t we great? If you’re still experiencing the issue, let us know.”
+
+![Example email to a customer.](https://media.disquscdn.com/notes/dmatt_script_ss.png)
+
+*Command link script output*
+
+![Command line script output.](https://media.disquscdn.com/notes/dmatt_script_email.png)
+
+*Example email to a customer*
 
 Overall, I learned a few things about how to use:
 
