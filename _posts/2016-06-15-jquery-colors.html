@@ -3,12 +3,14 @@ layout: sandbox
 title: jQuery Colors
 excerpt: A new hue every second.
 menu: false
+category: things_ive_made
+thumbnail: http://i.imgur.com/UurQ8N4.png
 ---
 
 <script>
 var currentColor = 000000;
 	setInterval(function () {
-	  ++currentColor;
+	  currentColor++;
 	  $("body").css("background-color","#"+currentColor);
 	}, 100);
 </script>
