@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Making Phabricator talk to Desk with email and APIs"
-date:   2013-11-22 14:00:00 -0700
-categories: [technology, things_ive_made]
+categories: [technology, things_i_made, python, APIs, Disqus]
 thumbnail: https://media.disquscdn.com/notes/dmatt_script_ss.png
 ---
 
