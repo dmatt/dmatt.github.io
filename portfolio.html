@@ -9,7 +9,7 @@ menu: false
 
   <ul class="post-list">
     {% for post in site.posts %}
-      {% if post.categories contains "things_ive_made" %}
+      {% if post.categories contains "things_i_made" or post.categories contains "placeholders" %}
 	      <li>
 	        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
