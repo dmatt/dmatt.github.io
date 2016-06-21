@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Recent Discussions Component for Disqus channels"
+title:  "Recent Discussions Component for Disqus Channels"
 categories: [technology, things_i_made, Disqus, APIs, jQuery]
 thumbnail: http://i.imgur.com/YOtVML3.png
 ---
