@@ -6,12 +6,12 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: I Have No Idea What I'm Doing
+title: I Made a Thing
 email: http://scr.im/emaildmatt
 description: > # this means to ignore newlines until "baseurl:"
-  A visual representaiton of me stumbling through new ideas, skills, and dog memes on the internet.
+  A visual representation of me stumbling through new ideas, skills, and dog memes on the internet.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+url: "http://dmatt.github.io" # the base hostname & protocol for your site
 twitter_username: iamfrancisyo
 github_username:  dmatt
 
