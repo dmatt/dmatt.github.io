@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Internet Comment Generator</title>
+<style type="text/css">
+	h1 {
+		display: block;
+	}
+
+	body { 
+		background: #FFF; 
+		font: 15px/1.45em "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+		color: #525355 !important;
+		text-align: center;
+		}
+	#quote-card {
+		width: 420px;
+		margin-top: 100px;
+		margin-bottom: 100px; 
+	}
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.8/typicons.min.css">
+<script>
+	$(document).ready(function() {
+		var currentMax;
+		var currentID;
+		$.ajax({
+			method: 'GET',
+			url: 'https://disqus.com/api/3.0/posts/list.json',
+			data: {
+				api_key: 'XS2LMvzYSb72mQKoo3j9updXmZh7dRrzRiQRboHDRUOZPa9z9WZRal9NEhSRIznF', 
+				limit: '1',
+				order: 'desc',
+				related: 'thread'
+			}
+		}).done(function( msg ) {
+			currentMax = msg.response['0'].id;
+			var currentID = ourRandomRange(4, currentMax);
+			$('#embedded-comment').attr('src', 'https://embed.disqus.com/p/'+currentID.toString(36));
+		});
+		function ourRandomRange(ourMin, ourMax) {
+			return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
+		}
+		$('#button-next').click(function () {
+			currentID = ourRandomRange(4, currentMax);
+			$('#embedded-comment').attr('src', 'https://embed.disqus.com/p/'+currentID.toString(36));
+
+		});
+		$('#button-tweet').click(function () {
+			alert(currentID);
+		});
+	});
+</script>
+</head>
+<body>
+<div class="container-fluid">
+<header id="header">
+  <div class="title">
+    <h1><span class="typcn typcn-keyboard" style="font-size: 150%;"></span></h1>
+    <h1> Internet Comment Generator</h1>
+    <h2><small></small></h2>
+    <p>|-*---------|</p>
+</div>
+</header>
+<div style="background-color: lightpink;">
+<div id="quote-card" class="center-block">
+	<iframe src="" width="420" height="300" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" id="embedded-comment"></iframe>
+	<div class="pull-right">
+		<a href="#" class="btn btn-default" role="button" id="button-tweet">Tweet <span class="typcn typcn-social-twitter"></span></a>
+		<a href="#" class="btn btn-primary" role="button" id="button-next">Hit me ✨</a>
+	</div>
+</div>
+</div>
+<footer>
+	<p>You've explored .0005% of the (Disqus) comments on the Internet, tell the world.</p>
+	<p>Embed your own favorite comments on the internet at Disqus.</p>
+</footer>
+</div>
+</body>
+</html>
