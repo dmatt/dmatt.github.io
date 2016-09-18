@@ -2,96 +2,138 @@
 <html>
 <head>
 	<title>Internet Comment Generator</title>
-<style type="text/css">
-	h1 {
-		display: block;
-	}
-
+<style type='text/css'>
 	body { 
-		font: 15px/1.45em "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 		text-align: center;
-		}
-	.container-fluid {
-		background-color: white;
-	}
+		}	
 	#quote-card {
 		width: 420px;
-		margin-top: 100px;
-		margin-bottom: 100px; 
+		margin-top: 50px;
+		margin-bottom: 50px; 
+	}
+	#button-next {
+		margin-bottom: 10px;
 	}
 </style>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.8/typicons.min.css">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js'></script>
+<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.8/typicons.min.css'>
+<link rel='canonical' href='http://dmatt.github.io/internet-comment-generator.html'>
+<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 <script>
-	$(document).ready(function() {
-		var currentMax;
-		var commentsExplored = Number(localStorage.getItem('commentsExplored'));
-		var exploredPercent;
-		$.ajax({
-			method: 'GET',
-			url: 'https://disqus.com/api/3.0/posts/list.json',
-			data: {
-				api_key: 'XS2LMvzYSb72mQKoo3j9updXmZh7dRrzRiQRboHDRUOZPa9z9WZRal9NEhSRIznF', 
-				limit: '1',
-				order: 'desc',
-				related: 'thread'
-			}
-		}).done(function( msg ) {
-			currentMax = msg.response['0'].id;
-			var currentID = ourRandomRange(4, currentMax);
-			exploredPercent = commentsExplored/Number(currentMax);
-			$('#embedded-comment').attr('src', 'https://embed.disqus.com/p/'+currentID.toString(36));
-			updatePercent();
-		});
-		var currentID = ourRandomRange(4, currentMax);
-		function ourRandomRange(ourMin, ourMax) {
-			return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = 'https://platform.twitter.com/widgets.js';
+  fjs.parentNode.insertBefore(js, fjs);
+ 
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+ 
+  return t;
+}(document, 'script', 'twitter-wjs'));
+</script>
+<script>
+var currentMax;
+var commentsExplored = Number(localStorage.getItem('commentsExplored'));
+var exploredPercent;
+var currentID = ourRandomRange(4, currentMax);
+var currentPostMessage;
+
+function ourRandomRange(ourMin, ourMax) {
+	return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
+}
+
+function updatePercent(commentText) {
+	commentsExplored += 1;
+	localStorage.setItem('commentsExplored',commentsExplored);
+	exploredPercent = (commentsExplored/Number(currentMax)).toPrecision(3);
+	$('#explore-percent').html(exploredPercent+'%');
+    // Remove existing iframe
+	$('#tweetBtn iframe').remove();
+	// Generate new markup
+	var tweetBtn = $('<a></a>')
+        .addClass('twitter-share-button btn btn-default')
+        .attr('href', 'http://twitter.com/share')
+        .attr('data-text', '“'+''+jQuery.trim(currentPostMessage).substring(0, 35) + "..."+'”'
+        + '\n\n'
+        +'I explored '+exploredPercent+'% of @Disqus comments on the Internet.')
+        .attr('data-size', 'small')
+        .attr('data-via', 'iamfrancisyo')
+        .attr('data-related', 'disqus');
+    $('#tweetBtn').append(tweetBtn);
+    twttr.widgets.load();
+}
+
+function getCurrentCommentText(postID) {
+	$.ajax({
+		method: 'GET',
+		url: 'https://disqus.com/api/3.0/posts/details.json',
+		data: {
+			api_key: 'XS2LMvzYSb72mQKoo3j9updXmZh7dRrzRiQRboHDRUOZPa9z9WZRal9NEhSRIznF',
+			post: postID
 		}
-		$('#button-next').click(function () {
-			currentID = ourRandomRange(4, currentMax);
-			$('#embedded-comment').attr('src', 'https://embed.disqus.com/p/'+currentID.toString(36));
-			updatePercent();
-		});
-		$('#button-tweet').click(function () {
-			alert(currentID+'explored this many: '+exploredPercent+'%');
-			});
-		function updatePercent() {
-			commentsExplored += 1;
-			localStorage.setItem('commentsExplored',commentsExplored);
-			$('#explore-percent').html(exploredPercent+'%');
-		};
+	}).done(function( msg ) {
+		currentPostMessage = msg.response.raw_message;
+		updatePercent(currentPostMessage);
+	}).fail(
+	// Do nothing
+	);
+}
+
+$(document).ready(function() {
+	$.ajax({
+		method: 'GET',
+		url: 'https://disqus.com/api/3.0/posts/list.json',
+		data: {
+			api_key: 'XS2LMvzYSb72mQKoo3j9updXmZh7dRrzRiQRboHDRUOZPa9z9WZRal9NEhSRIznF', 
+			limit: '1',
+			order: 'desc',
+			related: 'thread'
+		}
+	}).done(function( msg ) {
+		currentMax = msg.response['0'].id;
+		currentID = ourRandomRange(4, currentMax);
+		getCurrentCommentText(currentID);
+		$('#embedded-comment').attr('src', 'https://embed.disqus.com/p/'+currentID.toString(36));
+
+	}).fail(
+	// Do nothing
+	);
+	$('#button-next').click(function () {
+		currentID = ourRandomRange(4, currentMax);
+		$('#embedded-comment').attr('src', 'https://embed.disqus.com/p/'+currentID.toString(36));
+		getCurrentCommentText(currentID);
 	});
+});
 </script>
 </head>
 <body>
-<div class="container-fluid">
-	<header id="header">
-	  <div class="title">
-	    <h1><span class="typcn typcn-keyboard" style="font-size: 150%;"></span></h1>
-	    <h1> Internet Comment Generator</h1>
-	    <h2><small>Go forth, brave soul.</small></h2>
+<div class='container-fluid'>
+	<header id='header'>
+	  <div class='title'>
+	    <h1>⌨️</h1>
+	    <h1>Internet Comment Generator</h1>
+	    <h2><small>Go forth, brave soul.</small><h2>
 	</div>
 	</header>
 	<div>
-		<div id="quote-card" class="center-block">
-			<iframe src="" width="420" height="300" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" id="embedded-comment"></iframe>
-			<div class="pull-right">
-				<a href="#" class="btn btn-default">Tweet <span class="typcn typcn-social-twitter"></span></a>
-				<a class="btn btn-default"
-				href="https://twitter.com/share"
-				data-size="large"
-				data-url="http://dmatt.github.io/internet-comment-generator.html"
-				data-via="iamfrancisyo,disqus"
-				data-text="blah blah blah I explored the internet" role="button" id="button-tweet">
-				Tweet <span class="typcn typcn-social-twitter"></span>
-				</a>
-				<a href="#" class="btn btn-primary" role="button" id="button-next">Hit me ✨</a>
-			</div>
+		<div id='quote-card' class='center-block'>
+			<a href='#' class='btn btn-default btn-lg btn-block' role='button' id='button-next'>Hit me ✨</a>
+			<iframe src='' width='420' height='300' seamless='seamless' scrolling='no' frameborder='0' allowtransparency='true' id='embedded-comment'>hi</iframe>
 		</div>
 	</div>
 <footer>
-	<p>You've explored <strong><span id="explore-percent">0%</span></strong> of (<a href="https://embed.disqus.com">Disqus</a>) comments on the Internet. Good job.</p>
+	<p>You've explored <strong><span id='explore-percent'>0%</span></strong> of (<a href='https://embed.disqus.com'>Disqus</a>) comments on the Internet. Good job.</p>
+	<p>
+	<span id="tweetBtn">
+    </span>
+	</p>
 </footer>
 </div>
 </body>
