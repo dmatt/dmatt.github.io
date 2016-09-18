@@ -21,35 +21,40 @@
 <link rel='canonical' href='http://dmatt.github.io/internet-comment-generator.html'>
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 <script>
+// twitter widegt script to gener tweet button iframe
 window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = 'https://platform.twitter.com/widgets.js';
-  fjs.parentNode.insertBefore(js, fjs);
- 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
- 
-  return t;
+	var js, fjs = d.getElementsByTagName(s)[0],
+		t = window.twttr || {};
+	if (d.getElementById(id)) return t;
+	js = d.createElement(s);
+	js.id = id;
+	js.src = 'https://platform.twitter.com/widgets.js';
+	fjs.parentNode.insertBefore(js, fjs);
+
+	t._e = [];
+	t.ready = function(f) {
+		t._e.push(f);
+	};
+
+	return t;
 }(document, 'script', 'twitter-wjs'));
 </script>
 <script>
+// variables for comment data from Disqus API and remembering user's clicks
 var currentMax;
 var commentsExplored = Number(localStorage.getItem('commentsExplored'));
 var exploredPercent;
 var currentID = ourRandomRange(4, currentMax);
 var currentPostMessage;
 
+// generates a random number ID within a range
 function ourRandomRange(ourMin, ourMax) {
 	return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
 }
 
-function updatePercent(commentText) {
+// increment the user's click number
+// update the number in the page and reload a new tweet button with new data
+function updatePercent() {
 	commentsExplored += 1;
 	localStorage.setItem('commentsExplored',commentsExplored);
 	exploredPercent = (commentsExplored/Number(currentMax)).toPrecision(3);
@@ -60,16 +65,17 @@ function updatePercent(commentText) {
 	var tweetBtn = $('<a></a>')
         .addClass('twitter-share-button btn btn-default')
         .attr('href', 'http://twitter.com/share')
-        .attr('data-text', '“'+''+jQuery.trim(currentPostMessage).substring(0, 35) + "..."+'”'
+        .attr('data-text', '“'+''+jQuery.trim(currentPostMessage).substring(0, 35) + '...'+'”'
         + '\n\n'
         +'I explored '+exploredPercent+'% of @Disqus comments on the Internet.')
         .attr('data-size', 'small')
         .attr('data-via', 'iamfrancisyo')
         .attr('data-related', 'disqus');
-    $('#tweetBtn').append(tweetBtn);
-    twttr.widgets.load();
+	$('#tweetBtn').append(tweetBtn);
+	twttr.widgets.load();
 }
 
+// get the comment text from Disqus
 function getCurrentCommentText(postID) {
 	$.ajax({
 		method: 'GET',
@@ -86,6 +92,7 @@ function getCurrentCommentText(postID) {
 	);
 }
 
+// get the most recent comment on Disqus so we know our maximum comment ID
 $(document).ready(function() {
 	$.ajax({
 		method: 'GET',
