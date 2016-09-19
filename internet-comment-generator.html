@@ -57,7 +57,7 @@ function ourRandomRange(ourMin, ourMax) {
 function updatePercent() {
 	commentsExplored += 1;
 	localStorage.setItem('commentsExplored',commentsExplored);
-	exploredPercent = (commentsExplored/Number(currentMax)).toPrecision(3);
+	exploredPercent = ((commentsExplored*100)/Number(currentMax)).toPrecision(3);
 	$('#explore-percent').html(exploredPercent+'%');
     // Remove existing iframe
 	$('#tweetBtn iframe').remove();
