@@ -1,10 +1,23 @@
-<!DOCTYPE html PUBLIC "Embed test page for Disqus development">
-<html>
+<!doctype html>
+<html amp lang="en">
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta name="robots" content="noindex,nofollow">
-        <title>Embed code update test</title>
-        <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <title>Disqus + AMP</title>
+    <link rel="canonical" href="http://dmatt.github.io/test/disqus-amp.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">    
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Open-source framework for publishing content",
+        "datePublished": "2015-10-07T12:02:41Z",
+        "image": [
+          "logo.jpg"
+        ]
+      }
+    </script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>        
     </head>
     <body>
         <div id="container">
@@ -18,10 +31,7 @@
                 <li><a href="/test/muut-forum.html">Muut Forum</a></li>
                 <li><a href="/test/livefyre.html">Livefyre</a></li>
                 <li><a href="/test/civil-comments">Civil Comments</a></li>
-            </ul>
-            <p>Comment Count:<a href="http://dmatt.github.io/test/#disqus_thread">comment</a></p>
-            <p>Comment Count:<a href="#" data-disqus-identifier="cat-count">comment</a></p>
-            <p>Comment Count:<span class="disqus-comment-count" data-disqus-identifier="cat-count">comment</span></p>                        
+            </ul>                        
 
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                 sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -49,29 +59,12 @@
                 cillum dolore eu fugiat nulla pariatur. Excepteur sint
                 occaecat cupidatat non proident, sunt in culpa qui officia
                 deserunt mollit anim id est laborum.</p>
-                <div id="disqus_thread"></div>
-<script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    
-    var disqus_config = function () {
-        this.page.url = 'http://dmatt.github.io/test/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'cat-count'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        this.page.title = 'Title about cats';
-    };
-    
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        
-        s.src = '//kaffepausen.disqus.com/embed.js';
-        
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<amp-iframe width=600 height=140
+            layout="responsive"
+            sandbox="allow-scripts allow-same-origin allow-modals allow-popups"
+            resizable
+            src="https://s3.amazonaws.com/dangoldin.com/amp-disqus.html?url=http%3A%2F%2Fdmatt.github.io%2Ftest%2Fdisqus-amp.html&disqus_name=https%3A%2F%2Fkaffepausen.disqus.com%2Fembed.js&identifier=hello">
+</amp-iframe>
             <div id="page-content">
                 <h2>Man Lands on Moon</h2>
 
@@ -94,6 +87,5 @@
                     deserunt mollit anim id est laborum.</p>
             </div>              
         </div>
-    <script id="dsq-count-scr" src="//kaffepausen.disqus.com/count.js" async></script>
     </body>
 </html>
