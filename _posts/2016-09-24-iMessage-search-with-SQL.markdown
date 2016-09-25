@@ -9,7 +9,7 @@ Having all your iMessages in iCloud is pretty neat because you can search for an
 
 ### But. iMessage search is pretty bad. 
 
-![Why was I talking about raccoons?](/images/imessage_racoon_search.png)
+![Why was I talking about raccoons?](/images/imessage_racoon_search.png?1)
 
 It shows you the total number of matches but provides no way to navigate through each instance, it just plops you down at the most recent result, which your stupid brain probably would have remembered anyway.
 
