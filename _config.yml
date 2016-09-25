@@ -17,3 +17,6 @@ github_username:  dmatt
 
 # Build settings
 markdown: kramdown
+
+# Google services
+google_analytics: UA-37606906-4
