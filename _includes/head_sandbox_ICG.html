@@ -1,0 +1,131 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+	<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js'></script>
+	<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.8/typicons.min.css'>
+	{% if jekyll.environment == 'production' %}
+		{% include analytics.html %}
+	{% endif %}
+<style type='text/css'>
+	body { 
+		text-align: center;
+		} 
+	#quote-card {
+		width: 420px;
+		margin-top: 50px;
+		margin-bottom: 50px; 
+	}
+	#button-next {
+		margin-bottom: 10px;
+	}
+</style>
+<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+<script>
+// twitter widegt script to gener tweet button iframe
+window.twttr = (function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0],
+		t = window.twttr || {};
+	if (d.getElementById(id)) return t;
+	js = d.createElement(s);
+	js.id = id;
+	js.src = 'https://platform.twitter.com/widgets.js';
+	fjs.parentNode.insertBefore(js, fjs);
+
+	t._e = [];
+	t.ready = function(f) {
+		t._e.push(f);
+	};
+
+	return t;
+}(document, 'script', 'twitter-wjs'));
+</script>
+<script>
+// variables for comment data from Disqus API and remembering user's clicks
+var currentMax;
+var commentsExplored = Number(localStorage.getItem('commentsExplored'));
+var exploredPercent;
+var currentID = ourRandomRange(4, currentMax);
+var currentPostMessage;
+
+// generates a random number ID within a range
+function ourRandomRange(ourMin, ourMax) {
+	return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
+}
+
+// increment the user's click number
+// update the number in the page and reload a new tweet button with new data
+function updatePercent() {
+	commentsExplored += 1;
+	localStorage.setItem('commentsExplored',commentsExplored);
+	exploredPercent = ((commentsExplored*100)/Number(currentMax)).toPrecision(3);
+	$('#explore-percent').html(exploredPercent+'%');
+		// Remove existing iframe
+	$('#tweetBtn iframe').remove();
+	// Generate new markup
+	var tweetBtn = $('<a></a>')
+				.addClass('twitter-share-button btn btn-default')
+				.attr('href', 'http://twitter.com/share')
+				.attr('data-text', '“'+''+jQuery.trim(currentPostMessage).substring(0, 35) + '...'+'”'
+				+ '\n\n'
+				+'I explored '+exploredPercent+'% of @Disqus comments on the Internet.')
+				.attr('data-size', 'small')
+				.attr('data-via', 'iamfrancisyo')
+				.attr('data-related', 'disqus');
+	$('#tweetBtn').append(tweetBtn);
+	twttr.widgets.load();
+}
+
+// get the comment text from Disqus
+function getCurrentCommentText(postID) {
+	$.ajax({
+		method: 'GET',
+		url: 'https://disqus.com/api/3.0/posts/details.json',
+		data: {
+			api_key: 'XS2LMvzYSb72mQKoo3j9updXmZh7dRrzRiQRboHDRUOZPa9z9WZRal9NEhSRIznF',
+			post: postID
+		}
+	}).done(function( msg ) {
+		currentPostMessage = msg.response.raw_message;
+		updatePercent(currentPostMessage);
+	}).fail(
+	// Do nothing
+	);
+}
+
+// get the most recent comment on Disqus so we know our maximum comment ID
+$(document).ready(function() {
+	$.ajax({
+		method: 'GET',
+		url: 'https://disqus.com/api/3.0/posts/list.json',
+		data: {
+			api_key: 'XS2LMvzYSb72mQKoo3j9updXmZh7dRrzRiQRboHDRUOZPa9z9WZRal9NEhSRIznF', 
+			limit: '1',
+			order: 'desc',
+			related: 'thread'
+		}
+	}).done(function( msg ) {
+		currentMax = msg.response['0'].id;
+		currentID = ourRandomRange(4, currentMax);
+		getCurrentCommentText(currentID);
+		$('#embedded-comment').attr('src', 'https://embed.disqus.com/p/'+currentID.toString(36));
+
+	}).fail(
+	// Do nothing
+	);
+	$('#button-next').click(function () {
+		currentID = ourRandomRange(4, currentMax);
+		$('#embedded-comment').attr('src', 'https://embed.disqus.com/p/'+currentID.toString(36));
+		getCurrentCommentText(currentID);
+	});
+});
+</script>
+</head>
