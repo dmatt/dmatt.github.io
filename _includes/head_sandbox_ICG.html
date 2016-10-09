@@ -125,6 +125,12 @@ $(document).ready(function() {
 		currentID = ourRandomRange(4, currentMax);
 		$('#embedded-comment').attr('src', 'https://embed.disqus.com/p/'+currentID.toString(36));
 		getCurrentCommentText(currentID);
+		ga('send', {
+			hitType: 'event',
+			eventCategory: 'Internet Comment Generator',
+			eventAction: 'Load more',
+			eventLabel: 'Hit me'
+		});
 	});
 });
 </script>
