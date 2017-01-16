@@ -60,7 +60,7 @@
 		$('document').ready(function() {
 			// Error handler function for getCurrentPosition
 			function error(err) {
-				alert('ERROR(' + err.code + '): ' + err.message);
+				document.getElementById('loading').innerHTML = 'ERROR(' + err.code + '): ' + err.message;
 			}
 
 			document.getElementById('currently-temp').style.display = 'none';
