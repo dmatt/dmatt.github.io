@@ -119,7 +119,8 @@
 					// Make API call to darksky to get weather temp and  description
 					$.ajax({
 						method: 'GET',
-						url: 'https://crossorigin.me/https://api.darksky.net/forecast/907160cda3c3fe28b8a7a2525b827ecc/' + coordinates,
+						dataType: 'jsonp',						
+						url: 'https://api.darksky.net/forecast/907160cda3c3fe28b8a7a2525b827ecc/' + coordinates,
 						data: {
 							exclude: '[minutely,daily,alerts,flags]'
 						},
