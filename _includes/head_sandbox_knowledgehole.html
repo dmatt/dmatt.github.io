@@ -1,0 +1,74 @@
+<!-- 🖐 Head, CSS and JS  -->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+	<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+	{% if jekyll.environment == 'production' %}
+	{% include analytics.html %}
+	{% endif %}
+	
+	<style type='text/css'>
+
+	/*	http://paletton.com/palette.php?uid=33W0u0kbvwa6yt%2B6FtIkDukkHu6*/
+
+	#container-fluid {
+		background-color: #FFF5A3;
+	}
+
+	#main {
+		background-color: #FFD5A3;
+	}
+
+	#search {
+		background-color: #F2AB56;
+	}	
+
+	#search-display{
+		background-color: #EDD6BC;
+	}
+
+	#search-results {
+		background-color: #EDD6BC;
+
+	}
+
+	#wiki {
+		background-color: #7A7FB0;		
+
+	}
+
+	#deepness {
+		background-color: #4A53A7;
+	}
+	#carousel {
+		background-color: #F2E056;
+	}
+	.carousel-card {
+		background-color: #EDD6BC;
+	}
+	#footer {
+		background-color: grey;
+	}
+	#made-by {
+		background-color: white;
+	}
+	#donate {
+		background-color: white;
+	}
+
+	</style>
+	<script>
+		
+	</script>
+
+</head>
