@@ -1,0 +1,47 @@
+.podium > div {
+    margin: 2rem;
+  }
+  
+  .navbar-brand, .ranking {
+    font-family: 'Press Start 2P';
+  
+  }
+  
+  a.navbar-brand:hover {
+    text-decoration: underline;
+    color: white;
+  }
+  
+  #bootstrap-embed-wrapper {
+    margin: 50px;
+  }
+  
+  .navbar-brand {
+    color: #d3cae8;
+  }
+  
+  #navigation {
+    background-color: #4b367c;
+  }
+  
+  .card {
+    background-color: lightblue;
+  }
+  
+  .collapsed {
+    display: none;
+  }
+  
+  button.twitchy {
+    background: #4b367c;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: #fff;
+    margin: 2px;
+    line-height: normal;
+  }
+  
+  html {
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+  }
