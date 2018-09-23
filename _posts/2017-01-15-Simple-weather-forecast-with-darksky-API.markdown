@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "A Simple Weather Forecast Page Using Dark Sky API"
-categories: [APIs]
+categories: [APIs, things_i_made]
 thumbnail: /images/weather.gif
 ---
 
