@@ -5,8 +5,6 @@ categories: [technology, javascript, vscode, APIs]
 thumbnail: /images/twitch_top_ten.png
 ---
 
-![mobile view of top ten list](/images/twitch_top_ten.png)
-
 Not being much of a [Twitch](https://twitch.com) user myself (and yes my residence under this rock is very cozy, thank you), there were a few mildly interesting things I learned about the product while working on this little project:
 
 - One of the most popular channels is a guy who plays online blackjack and with a human "live dealer" who streams an actual table, cards, casino carpet etc.
@@ -20,13 +18,15 @@ Not being much of a [Twitch](https://twitch.com) user myself (and yes my residen
 
 So the goal of the [Use the Twitch JSON API](https://learn.freecodecamp.org/coding-interview-prep/take-home-projects/use-the-twitch-json-api/) project is to get channel data from Twitch to show the status of certain streams, i.e. whether or not a given user is online/offine, and display some relevant details. This project used to be a part of the frontend certification but was recently moved to the "Take Home Projects" section. I thought it would be a bit more interesting to grab the top 10 streamers on every refresh of the page for a "leaderboard".
 
+![mobile view of top ten list](/images/twitch_top_ten.png)
+
 The top section of the page displays a Twitch embed, and clicking "Watch" on any channel in the ranked leaderboard list will update the embed with the given channel that you clicked. Pretty simple!
 
 # Things I learned
 
 Here's a collection of some of the things I learned during this project:
 
-- CSS and JavaScript can not target IDs that start with an integter(https://stackoverflow.com/questions/22141358/why-can-an-element-id-not-start-with-an-integer) despite that pattern being valid HTML. I was using `n-place` for each div ID wher n was the rank number of the item. I had to update this to `place-n`.
+- CSS and JavaScript [can not target IDs that start with an integter](https://stackoverflow.com/questions/22141358/why-can-an-element-id-not-start-with-an-integer) despite that pattern being valid HTML. I was using `n-place` for each div ID wher n was the rank number of the item. I had to update this to `place-n`.
 - To set a `div` height equal to text height (used in the collapsed style of the twitch channel description within each card), set an explicit `line-height` and use the same value for div `height`.
 - In CSS `rem` units are just a unit of whatever the `<html>` root font size is, keeps all sizes relative to font size `1rem`, `2.5rem` etc.
 - In script.js there's a function that takes JSON data from the API call, does `forEach()` through it, and inserts channel data like "description" into pre-created elements. Would probably be better if I used [Element templates](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) and just cloned a new one to insert new data. Simple example of this `index.html` and `components/nav.html` (first time using this html5 feature!). I'm not sure what is a better practice: creaming elements from JavaScript, or creating all of the HTML structure first.

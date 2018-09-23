@@ -5,7 +5,7 @@ permalink: /about/
 menu: true
 ---
 
-
+Documentation of my self-guided tour through new concepts and skills.
 
 Made with the base Jekyll theme. You can find the source code for the Jekyll new theme at:
 {% include icon-github.html username="jglovier" %} /
