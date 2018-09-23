@@ -9,7 +9,7 @@
 title: I Made a Thing
 email: http://scr.im/emaildmatt
 description: > # this means to ignore newlines until "baseurl:"
-  A visual representation of me stumbling through new ideas, skills, and dog memes on the internet.
+  Documentation of my self-guided tour through new concepts and skills.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://dmatt.github.io" # the base hostname & protocol for your site
 twitter_username: iamfrancisyo
