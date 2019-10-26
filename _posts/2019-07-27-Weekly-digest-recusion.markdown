@@ -19,20 +19,22 @@ Summary of ["The Big Recursive Idea"](https://www.youtube.com/watch?v=oKndim5-G9
 	a. Works by either handling the minimal data set OR handling 1 small piece/nibble of the data set , then makes a call to solve the problem for the reduced data set. Combines all these results together.
 	b. Don’t think about what the recursive call does, just “if this call returns the result it is supposed to, how do I solve the entire problem?"
 
-How I would write recursion in very length pseudocode:
+How I would write recursion in very lengthy pseudocode:
 
 ```
 a "recursive function name" that does something on "parameters":
-		base case - what condition is the simplest case of what "parameters" can be?:
-				in this simple/smallest case, do something for the last time with last 1 unit of
-				parameter
-				return the result
-		else if, are there any other next simplest cases to catch?:
-				pass
-		else:
-				do something to 1 unit of the parameter
-				return a call to "recursive function name" on 1 unit smaller version of parameter,
-				reduce the parameter so that it eventually becomes simple/small case above
+	base case - what condition is the simplest case of 
+	what "parameters" can be?:
+		in this simple/smallest case, do something for the last
+		time with last 1 unit of parameter return the result
+	else if, are there any other next simplest cases to catch?:
+		pass
+	else:
+		do something to 1 unit of the parameter
+		return a call to "recursive function name"
+		on 1 unit smaller version of parameter,
+		reduce the parameter so that it
+		eventually becomes simple/small case above
 ```
 
-🐎
+Next up, read [Weekly Digest: Recursion](/weekly%20digest/2019/07/27/Weekly-digest-recusion.html) 🐎
