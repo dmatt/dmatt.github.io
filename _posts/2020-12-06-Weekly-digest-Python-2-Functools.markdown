@@ -2,7 +2,7 @@
 layout: post
 title:  "Weekly Digest: Python 2, Functools, data tools, and ETag headers"
 categories: [weekly digest, python]
-thumbnail: /images/etag_header.jpeg
+thumbnail: /images/etag_header.png
 ---
 
 ## 2to3 and six libraries
