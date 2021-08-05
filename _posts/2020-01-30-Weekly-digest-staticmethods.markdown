@@ -2,9 +2,10 @@
 layout: post
 title:  "Weekly Digest: Methods"
 categories: [weekly digest, python, OOP, django]
+thumbnail: /images/classmethod.png
 ---
 
-## Python Object Oriented Odds and Ends
+## Python Object Oriented: Methods
 
 * **Abstract Base Classes** are what they sound like — a Base class that other objects can extend from. It is abstract because it is loosly defined (but this is done on purpose). It's not good to have loosly defined objects all over the place, especially because you don't want yourself (and others) to accidentally create object instances of these poorly defined classes. So for this reason, instantiation of ABCs is disallowed
     * Example: Imagine you create a class called Animal from which all other critter classes extend from. I.e. `Class Sloth(Animal):` and `Class Butterfly(Animal):` and you define all of your methods and attributes and properties inside `Sloth` and `Butterfly` because of course, they are and do very different things. Then one day you get lazy and create an object with `animal = Animal()` and you try to `animal.make_noise()` because you forgot that `make_noise()` method is only defined in child classes (Sloth and Butterfly).
