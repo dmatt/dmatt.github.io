@@ -7,8 +7,6 @@ thumbnail: /images/weather.gif
 
 This simple <a href="/weather" target="_blank">weather page</a> get's the users' location and returns the current temperature, a short description of the upcoming forecast, and a corresponding animated icon.
 
-![Much unit conversion.](/images/weather.gif)
-
 ## What, how?
 
 First, a loading message is displayed while the page checks if a browser location is available and permissible by the user via the [geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation). If available, `getCurrentPosition()` is called and we get a `position` object which contains latitude and longitude coordinates.
