@@ -2,7 +2,7 @@
 layout: post
 title:  "Testing Espanso and local Llama.cpp for inline AI Text!"
 categories: [AI, python, bash]
-thumbnail: /images/llama.webp
+thumbnail: /images/llama.tiff
 ---
 
 I recently set aside several hours to follow a tutorial to play with some AI tools I’ve been eyeing 👀… here are some (shorthand and messy) notes about my journey setting up and utilizing [Llama.cpp](https://github.com/ggerganov/llama.cpp) locally and integrating it with [Espanso](https://espanso.org/) for seamless (and more private) text generation in any macOS app where you can type things.
