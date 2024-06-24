@@ -2,15 +2,17 @@
 layout: post
 title:  "Testing Espanso and local Llama.cpp for inline AI Text!"
 categories: [AI, python, bash]
+thumbnail: /images/llama.webp
 ---
-
-## Testing Espanso and local Llama.cpp for inline AI Text!
 
 I recently set aside several hours to follow a tutorial to play with some AI tools I’ve been eyeing 👀… here are some (shorthand and messy) notes about my journey setting up and utilizing [Llama.cpp](https://github.com/ggerganov/llama.cpp) locally and integrating it with [Espanso](https://espanso.org/) for seamless (and more private) text generation in any macOS app where you can type things.
 
 Here’s what it looks like end-to-end (type some text anywhere, command-X to cut, trigger Espanso):
 
-[Screen Recording 2024-06-05 at 4.57.15 PM.mov](Screen Recording 2024-06-05 at 4.57.15 PM.mov)
+<video width="640" height="360" controls>
+  <source src="/images/1.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 **Here’s what’s covered below:**
 
@@ -136,7 +138,7 @@ except Exception as e:
 
 Using Espanso, we triggered text generation by copying a prompt to the clipboard and typing `:llama`. The integration worked seamlessly, but we observed that the model's output could be gibberish without proper prompt engineering. For instance, a simple `knock, knock, who's th` prompt resulted in mixed, incomplete sentences…
 
-![image-20240603-230348.png](image-20240603-230348.png)
+![/images/2.png](/images/2.png)
 
 ### Enhancing LLM Output
 
@@ -155,11 +157,11 @@ full_prompt = priming_prompt + "User: " + prompt + " Assistant: "
 
 The output for this one is marginally better and more coherent. But more adjustments are needed!
 
-![image-20240603-231010.png](image-20240603-231010.png)
+![/images/3.png](/images/3.png)
 
 Compare this to a higher quality output from NextChat (OpenAI):
 
-![image-20240603-231616.png](image-20240603-231616.png)
+![/images/4.png](/images/4.png)
 
 **Enhancing Efficiency and Privacy with Local AI Integration**
 
@@ -177,7 +179,10 @@ This project showed us how to use LLMs locally and run scripts with Espanso. It 
 
 ## **Update Jun 24, 2024: Migrating from Espanso to Raycast… Why?**
 
-[Raycast and LLama.mov](Raycast and LLama.mov)
+<video width="640" height="360" controls>
+  <source src="/images/5.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 Since my last update, I've made changes to my workflow! I've switched from using Espanso to [Raycast](https://www.raycast.com/). This transition has streamlined my processes and consolidated multiple tools into one. Raycast is an incredibly versatile tool that not only supports [script commands](https://manual.raycast.com/script-commands) but also replaces several disparate tools I was previously using. It functions as a clipboard manager, window manager, snippet manager, and much more. This all-in-one capability reduces the need for multiple applications, simplifying my workflow and boosting productivity.
 
