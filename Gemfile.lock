@@ -42,9 +42,9 @@ GEM
     ffi (1.15.3)
     forwardable-extended (2.6.0)
     gemoji (3.0.1)
-    github-pages (215)
-      github-pages-health-check (= 1.17.2)
-      jekyll (= 3.9.0)
+    github-pages (228)
+      github-pages-health-check (= 1.17.3)
+      jekyll (= 4.3.2)
       jekyll-avatar (= 0.7.0)
       jekyll-coffeescript (= 1.1.1)
       jekyll-commonmark-ghpages (= 0.1.6)
@@ -86,7 +86,7 @@ GEM
       nokogiri (>= 1.10.4, < 2.0)
       rouge (= 3.26.0)
       terminal-table (~> 1.4)
-    github-pages-health-check (1.17.2)
+    github-pages-health-check (1.17.3)
       addressable (~> 2.3)
       dnsruby (~> 1.60)
       octokit (~> 4.0)
@@ -98,7 +98,7 @@ GEM
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    jekyll (3.9.0)
+    jekyll (4.3.2)
       addressable (~> 2.4)
       colorator (~> 1.0)
       em-websocket (~> 0.5)
@@ -270,4 +270,4 @@ DEPENDENCIES
   github-pages
 
 BUNDLED WITH
-   1.17.2
+   2.4.19
