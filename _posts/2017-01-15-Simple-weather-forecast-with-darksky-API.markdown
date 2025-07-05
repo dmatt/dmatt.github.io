@@ -5,7 +5,7 @@ categories: [APIs, things_i_made]
 thumbnail: /images/weather.gif
 ---
 
-This simple <a href="/weather" target="_blank">weather page</a> get's the users' location and returns the current temperature, a short description of the upcoming forecast, and a corresponding animated icon.
+This simple weather page (no longer available) gets the user's location and returns the current temperature, a short description of the upcoming forecast, and a corresponding animated icon.
 
 ## What, how?
 
