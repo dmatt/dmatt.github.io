@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # Simple wrapper to run jekyll through bundler.
-# Falls back to an informative message if the gem isn't available.
-if bundle exec --which jekyll >/dev/null 2>&1; then
-  exec bundle exec jekyll "$@"
-else
-  echo "Jekyll is not installed. Run 'bundle install' first." >&2
-  exit 1
-fi
+# Set encoding to UTF-8 to handle Unicode characters in theme files
+export RUBYOPT="-E utf-8:utf-8"
+
+exec bundle exec jekyll "$@"

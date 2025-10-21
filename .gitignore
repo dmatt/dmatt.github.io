@@ -3,3 +3,5 @@ _site
 .jekyll-metadata
 .eslintrc.js
 .DS_Store
+vendor/
+.bundle/
